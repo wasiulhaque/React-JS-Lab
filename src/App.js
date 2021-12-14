@@ -1,16 +1,20 @@
 import "./App.css";
-import ProductComponent from "./components/Product";
-import ProductCardItem from "./components/ProductCard";
+
 import products from "./components/ProductList";
 import { useState } from "react";
+import React from "react";
 
 
 function App() {
 
+  const [, updateState] = React.useState();
+  const forceUpdate = React.useCallback(() => updateState({}), []);
+
   function increamentVotes(a){
-    products[a].votes = products[a].votes + 1;
-    console.log(products[a].votes);
-    return products[a].votes;
+    //console.log(a.votes);
+    a.votes = a.votes + 1;
+    console.log(a.votes);
+    forceUpdate();
   }
   
   products.sort((a, b) => (
@@ -25,7 +29,7 @@ function App() {
 			{
 				products.map((p,i) =>
         <div>
-            <p><button onClick={increamentVotes.bind(this,p.id)}><font size="5">{p.votes}</font></button></p>
+            <p><button onClick={increamentVotes.bind(this,p)}><font size="5">{p.votes}</font></button></p>
             <br></br>
 						<img src={p.productImageUrl} width="350" 
      height="500"></img>,
