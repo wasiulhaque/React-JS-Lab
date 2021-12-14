@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 function initVoteCount() {
     return Math.floor((Math.random() * 50) + 15);
   }

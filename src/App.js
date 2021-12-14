@@ -1,7 +1,6 @@
 import "./App.css";
 
 import products from "./components/ProductList";
-import { useState } from "react";
 import React from "react";
 
 
@@ -35,7 +34,8 @@ function App() {
      height="500"></img>,
             <p><font size="12">{p.title}</font></p>
             <p><font size="5">{p.description}</font></p>
-            <br></br>
+            <p><font size="4"> Submitted By: <img src={p.submitterAvatarUrl} width="50" 
+     height="50"></img></font></p>
             <p><hr></hr></p>
           
         </div>
