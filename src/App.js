@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import ProductComponent from "./components/Product";
+import ProductCardItem from "./components/ProductCard";
+import products from "./components/ProductList";
 
 function App() {
+  products.sort((a, b) => (
+    b.votes - a.votes
+));
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <div>
+			{
+				products.map((p,i) =>
+        <div>
+            <p><button><font size="5">{p.votes}</font></button></p>
+            <br></br>
+						<img src={p.productImageUrl} width="350" 
+     height="500"></img>,
+            <p><font size="12">{p.title}</font></p>
+            <p><font size="5">{p.description}</font></p>
+            <br></br>
+            <p><hr></hr></p>
+            <br></br>
+        </div>
+				)
+			}
+      </div>
   );
 }
 
