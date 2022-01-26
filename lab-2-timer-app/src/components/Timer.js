@@ -1,10 +1,10 @@
 import React, { useContext, useState } from "react";
 import { TimerContext } from "../contexts/TimerContext";
 
-export default function TimerList({ timer }) {
+export default function Timer({ timer }) {
     const { timerContext, setTimerContext } = useContext(TimerContext);
     const [secs, setSecs] = useState(timer.secs);
-    const [timerInterval, setTimerInterval] = useState(null);
+    const [buttonInterval, setButtonInterval] = useState(null);
     const [editButton, setEditButton] = useState(false);
     const [startButton, setStartButton] = useState(false);
 
@@ -44,16 +44,16 @@ export default function TimerList({ timer }) {
 
     const onClickStartButton = () => {
         setStartButton(true);
-        let timerInterval = setInterval(() => {
+        let buttonInterval = setInterval(() => {
             setSecs((prev) => prev + 1);
         }, 1000);
-        setTimerInterval(timerInterval);
+        setButtonInterval(buttonInterval);
     };
 
     const onClickStopButton = () => {
         setStartButton(false);
-        clearInterval(timerInterval);
-        setTimerInterval(null);
+        clearInterval(buttonInterval);
+        setButtonInterval(null);
     };
 
     return (
